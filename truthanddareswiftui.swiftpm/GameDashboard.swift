@@ -20,17 +20,18 @@ struct GameDashboard: View {
     }
     var body: some View {
         VStack {
-                Text("Tap Bottole to Reset")
+            Text("Tap Bottle to Reset")
                 .opacity( buttonIsHidden % 2 != 0 ? 0 : 1)
-                Button(action: { self.showProgress.toggle()
+            Spacer().frame(minWidth: 0, maxWidth: 300)
+            Button(action: { self.showProgress.toggle()
                 playerNumber = Int.random(in: 1...Counter)
                 degreeToRotate = playerNumber
                 degreeToRotate *= (360 / Counter)
-                debugPrint(degreeToRotate)
+                
                 
                 degreeToRotate += 360
                 buttonIsHidden += 1
-                    debugPrint(buttonIsHidden)
+                
             }, label: {
                 if showProgress {
                     Image("bottle")
@@ -51,6 +52,8 @@ struct GameDashboard: View {
                 
             })
             .onAppear { self.showProgress = true }
+            Spacer().frame(minHeight: 10, maxHeight: 100)
+            
         }
     }
     
